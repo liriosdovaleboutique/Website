@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coleção Florescer 🌸 | Lírios do Vale Boutique</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: 'Poppins', sans-serif; 
+      background: #faf8f5; 
+      color: #3d3d3d; 
+      line-height: 1.7; 
+      overflow-x: hidden;
+    }
+
+    header {
+      background: linear-gradient(135deg, #c4a69d 0%, #d4b5ae 50%, #e8d5cf 100%);
+      text-align: center;
+      padding: 180px 20px 120px;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=1500&q=80') center/cover;
+      opacity: 0.15;
+      z-index: 1;
+    }
+
+    header > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 4.5rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      margin-bottom: 25px;
+      text-shadow: 2px 4px 20px rgba(0,0,0,0.15);
+      animation: fadeInUp 1s ease;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    header p {
+      font-size: 1.4rem;
+      max-width: 700px;
+      margin: 0 auto 40px;
+      font-weight: 300;
+      line-height: 1.8;
+      text-shadow: 1px 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .btn {
+      display: inline-block;
+      background: #9b7d71;
+      color: #fff;
+      padding: 18px 45px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin: 12px;
+      transition: all 0.4s ease;
+      box-shadow: 0 8px 20px rgba(155, 125, 113, 0.3);
+      border: 2px solid transparent;
+    }
+    .btn:hover {
+      background: #fff;
+      color: #9b7d71;
+      border-color: #9b7d71;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(155, 125, 113, 0.4);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 2px solid #fff;
+      color: #fff;
+    }
+
+    .btn-secondary:hover {
+      background: #fff;
+      color: #9b7d71;
+      border-color: #fff;
+    }
+
+    section {
+      padding: 100px 20px;
+      text-align: center;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      color: #9b7d71;
+      margin-bottom: 30px;
+      font-size: 3rem;
+      font-weight: 600;
+      position: relative;
+      display: inline-block;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #c4a69d, transparent);
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 30px;
+      margin-top: 60px;
+    }
+    
+    .feature {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(196, 166, 157, 0.15);
+      padding: 40px 25px;
+      transition: all 0.4s ease;
+      border: 1px solid #f0e8e3;
+    }
+
+    .feature:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(196, 166, 157, 0.25);
+    }
+
+    .feature-icon {
+      font-size: 3rem;
+      display: block;
+      margin-bottom: 20px;
+    }
+
+    .feature strong {
+      display: block;
+      font-size: 1.3rem;
+      color: #9b7d71;
+      margin-bottom: 10px;
+    }
+
+    .feature p {
+      font-size: 0.95rem;
+      color: #7d7d7d;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      margin-top: 60px;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transition: all 0.5s ease;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(155, 125, 113, 0.95));
+      padding: 30px;
+      color: #fff;
+      transform: translateY(100%);
+      transition: transform 0.4s ease;
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      transform: translateY(0);
+    }
+
+    .gallery-overlay h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    .timer {
+      font-size: 2rem;
+      color: #9b7d71;
+      margin: 35px 0;
+      font-weight: 600;
+      padding: 25px;
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(196, 166, 157, 0.2);
+      display: inline-block;
+    }
+
+    #oferta {
+      background: linear-gradient(135deg, #f0e8e3 0%, #faf8f5 100%);
+      border-radius: 30px;
+      margin: 50px auto;
+      padding: 80px 40px;
+      box-shadow: 0 15px 50px rgba(0,0,0,0.08);
+    }
+
+    #oferta p {
+      font-size: 1.3rem;
+      max-width: 800px;
+      margin: 20px auto 40px;
+      color: #5d5d5d;
+    }
+
+    .lead-form {
+      margin-top: 40px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .lead-form input {
+      padding: 16px 25px;
+      border-radius: 50px;
+      border: 2px solid #e0d5cf;
+      width: 280px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      background: #fff;
+    }
+
+    .lead-form input:focus {
+      outline: none;
+      border-color: #c4a69d;
+      box-shadow: 0 5px 15px rgba(196, 166, 157, 0.2);
+    }
+
+    .lead-form button {
+      padding: 16px 40px;
+      background: #9b7d71;
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      box-shadow: 0 8px 20px rgba(155, 125, 113, 0.3);
+    }
+
+    .lead-form button:hover {
+      background: #8a6c60;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(155, 125, 113, 0.4);
+    }
+
+    footer {
+      background: linear-gradient(135deg, #9b7d71 0%, #8a6c60 100%);
+      color: #faf8f5;
+      padding: 60px 20px 30px;
+      text-align: center;
+    }
+
+    footer a {
+      color: #faf8f5;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    footer a:hover { 
+      color: #e8d5cf;
+      text-decoration: underline; 
+    }
+
+    footer p {
+      margin: 15px 0;
+    }
+
+    @media (max-width: 768px) {
+      header h1 { font-size: 2.8rem; }
+      h2 { font-size: 2.2rem; }
+      section { padding: 70px 20px; }
+      .lead-form input { width: 100%; max-width: 350px; }
+      .gallery img { height: 300px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🌷 Coleção Florescer</h1>
+    <p>Vista a beleza da fé e o poder da feminilidade. Uma coleção criada para mulheres que florescem em graça e propósito.</p>
+    <a href="#colecao" class="btn">✨ Quero Florescer Agora</a>
+    <a href="#conceito" class="btn btn-secondary">📖 Conhecer a Inspiração</a>
+  </header>
+
+  <section id="conceito">
+    <h2>🌷 Inspirada na leveza e na fé</h2>
+    <p style="font-size: 1.2rem; max-width: 800px; margin: 30px auto; color: #5d5d5d;">"Florescer" nasceu para lembrar que cada estação é uma nova chance de recomeçar. Peças com cortes modernos e tecidos nobres para mulheres de fé que valorizam elegância e propósito.</p>
+    <div class="features">
+      <div class="feature">
+        <span class="feature-icon">✨</span>
+        <strong>Modelagem Modesta</strong>
+        <p>Elegância que respeita seus valores</p>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">🌷</span>
+        <strong>Tecidos Leves</strong>
+        <p>Conforto para todo o dia</p>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">👑</span>
+        <strong>Ideal para Cultos</strong>
+        <p>Perfeito para eventos especiais</p>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">🌷</span>
+        <strong>Edição Limitada</strong>
+        <p>Exclusividade garantida</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="colecao">
+    <h2>👗 Conheça as Peças</h2>
+    <p style="font-size: 1.15rem; max-width: 700px; margin: 20px auto 0; color: #5d5d5d;">Cada peça foi pensada com carinho para você expressar sua fé com estilo</p>
+    <div class="gallery">
+      <div class="gallery-item">
+        <img src="1.png" alt="Vestido Aurora">
+        <div class="gallery-overlay">
+          <h3>Vestido Aurora</h3>
+          <p>Delicadeza em cada detalhe</p>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="2.png" alt="Conjunto Lírio">
+        <div class="gallery-overlay">
+          <h3>Conjunto Lírio</h3>
+          <p>Sofisticação e conforto</p>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="3.png" alt="Saia Rosé Grace">
+        <div class="gallery-overlay">
+          <h3>Saia Rosé Grace</h3>
+          <p>Elegância atemporal</p>
+        </div>
+      </div>
+    </div>
+    <a href="#oferta" class="btn" style="margin-top: 50px;">🌷 Ver Coleção Completa</a>
+  </section>
+
+  <section id="oferta">
+    <h2>🌷 Lançamento Exclusivo — Estoque Limitado!</h2>
+    <p>Garanta suas peças da Coleção <strong>Florescer</strong> com <strong>10% de desconto</strong> no lançamento.<br> 
+    <span style="color: #9b7d71; font-weight: 600;">Frete grátis para os 100 primeiros pedidos.</span></p>
+    <div class="timer" id="countdown">⏰ Carregando promoção...</div>
+    <a href="#lead" class="btn" style="margin-top: 30px;">🌷 Quero Minha Coleção Agora</a>
+  </section>
+
+  <section id="lead">
+    <h2>🌷 Entre para a Lista VIP</h2>
+    <p style="font-size: 1.2rem; max-width: 650px; margin: 20px auto; color: #5d5d5d;">Receba novidades, cupons exclusivos e devocionais inspiradores direto no seu e-mail!</p>
+    <form class="lead-form">
+      <input type="text" placeholder="Seu nome completo" required>
+      <input type="email" placeholder="Seu melhor e-mail" required>
+      <button type="submit">💌 Quero Fazer Parte</button>
+    </form>
+  </section>
+
+  <footer>
+    <p style="font-size: 1.1rem; font-weight: 600; margin-bottom: 20px;">© 2025 Lírios do Vale Boutique | Moda com Propósito</p>
+    <p style="margin: 25px 0;">
+      <a href="#">Catálogo</a> |
+      <a href="#">Quem Somos</a> |
+      <a href="#">Política de Trocas</a> |
+      <a href="#">Contato</a>
+    </p>
+    <p style="font-style: italic; margin-top: 30px; font-size: 1.1rem;">"Vista-se de graça, fé e propósito." ✨</p>
+  </footer>
+
+  <script>
+    // Timer de urgência
+    const countdown = document.getElementById('countdown');
+    const targetDate = new Date();
+    targetDate.setHours(targetDate.getHours() + 48);
+
+    setInterval(() => {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      countdown.innerHTML = `⏰ Promoção termina em: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }, 1000);
+
+    // Prevenir envio do formulário (pode ser integrado com backend depois)
+    document.querySelector('.lead-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Obrigada por se cadastrar! Em breve você receberá nossas novidades. 🌷');
+    });
+  </script>
+</body>
+</html>
