@@ -58,8 +58,8 @@
     .badge-placeholder{position:absolute;bottom:10px;right:10px;background:#fff;color:#5C3A40;border:1px solid rgba(92,58,64,.25);padding:4px 10px;border-radius:999px;font-weight:600;font-size:.72rem;box-shadow:0 4px 12px rgba(0,0,0,.06)}
 
     /* Grid produtos */
-    .grid{max-width:1200px;margin:16px auto 60px;padding:0 18px;display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-    .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;border:1px solid #f0e8e3;display:flex;flex-direction:column}
+    .grid{max-width:1200px;margin:16px auto 60px;padding:0 18px;display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(260px,320px));justify-content:center}
+    .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;border:1px solid #f0e8e3;display:flex;flex-direction:column;width:100%;max-width:320px;margin:0 auto}
     .card figure{aspect-ratio:3/4;overflow:hidden}
     .card img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
     .card:hover img{transform:scale(1.05)}
@@ -137,30 +137,35 @@
     // === Catálogo (edite aqui) ===
     const WHATS="https://wa.me/5511943996296";
 const IMG_BASE = 'img/'; // coloque suas fotos nesta pasta (img/CAT-101.jpg, etc.)
+const IMG_EXTS = ['jpg','jpeg','png','webp']; // tentaremos nessas extensões // tentaremos nessas extensões
 
 // === Catálogo (apenas itens dos prints) ===
 const produtos = [
-  { id:"CAT-101", nome:"Saia Hortênsia rodada com bolso (acompanha cinto)", preco:"R$ 149,00", categoria:"Saias", img:"CAT-101.jpg", desc:"Saia rodada com bolsos e cinto.", cores:["Azul Claro"], tamanhos:["G"], estoque:1 },
-  { id:"CAT-102", nome:"Saia Dália Midi com pregas (frente e costas) com bolso (acompanha cinto)", preco:"R$ 130,00", categoria:"Saias", img:"CAT-102.jpg", desc:"Midi com pregas e bolsos, acompanha cinto.", cores:["Marrom","Off White"], tamanhos:["GG"], estoque:2 },
-  { id:"CAT-103", nome:"Saia Flora rodada com bolso (acompanha cinto)", preco:"R$ 120,00", categoria:"Saias", img:"CAT-103.jpg", desc:"Saia rodada com bolsos.", cores:["Off White"], tamanhos:["GG"], estoque:1, discount:10 },
-  { id:"CAT-104", nome:"Saia Midi Couro Ecológico", preco:"R$ 159,00", categoria:"Saias", img:"CAT-104.jpg", desc:"Saia midi em couro ecológico.", cores:["Off White","Bordô"], tamanhos:["GG","G"], estoque:2 },
-  { id:"CAT-105", nome:"Camisa Social Manga Curta", preco:"R$ 99,90", categoria:"Blusas", img:"CAT-105.jpg", desc:"Camisa social manga curta.", cores:["Rosa Claro","Azul","Bege"], tamanhos:["M","G","GG"], estoque:1 },
-  { id:"CAT-106", nome:"Camisa Social", preco:"R$ 79,90", categoria:"Blusas", img:"CAT-106.jpg", desc:"Camisa social básica.", cores:["—"], tamanhos:["—"], estoque:1 },
-  { id:"CAT-107", nome:"Camisa Social Brisa", preco:"R$ 79,90", categoria:"Blusas", img:"CAT-107.jpg", desc:"Camisa leve Brisa.", cores:["—"], tamanhos:["—"], estoque:2 },
-  { id:"CAT-108", nome:"Vestido Magnólia", preco:"R$ 165,00", categoria:"Vestidos", img:"CAT-108.jpg", desc:"Vestido midi Magnólia.", cores:["—"], tamanhos:["—"], estoque:1 },
-  { id:"CAT-109", nome:"Vestido Jardim", preco:"R$ 99,99", categoria:"Vestidos", img:"CAT-109.jpg", desc:"Vestido com opção Verde Oliva.", cores:["Verde Oliva"], tamanhos:["M"], estoque:1, discount:10 },
-  { id:"CAT-110", nome:"Vestido Serenar", preco:"R$ 99,99", categoria:"Vestidos", img:"CAT-110.jpg", desc:"Vestido com pregas sutis.", cores:["Preto","Azul Marinho"], tamanhos:["M","M"], estoque:2 },
-  { id:"CAT-111", nome:"Blusa Harmonia", preco:"R$ 79,90", categoria:"Blusas", img:"CAT-111.jpg", desc:"Blusa Harmonia.", cores:["Branco"], tamanhos:["G1"], estoque:1 },
-  { id:"CAT-112", nome:"Conjunto Bela Essência", preco:"R$ 176,00", categoria:"Conjuntos", img:"CAT-112.jpg", desc:"Conjunto sofisticado.", cores:["Preto","Rosé"], tamanhos:["G1","G1"], estoque:2 },
-  { id:"CAT-113", nome:"Vestido Pétala", preco:"R$ 176,00", categoria:"Vestidos", img:"CAT-113.jpg", desc:"Vestido Pétala.", cores:["Rosé","Preto"], tamanhos:["G1","G1"], estoque:2 },
-  { id:"CAT-114", nome:"Vestido Magnólia (variações)", preco:"R$ 176,00", categoria:"Vestidos", img:"CAT-114.jpg", desc:"Magnólia com novas cores.", cores:["Azul Petróleo","Amarelo Manteiga"], tamanhos:["G1","G2"], estoque:2 },
-  { id:"CAT-115", nome:"Camisa Social manga curta", preco:"R$ 97,90", categoria:"Blusas", img:"CAT-115.jpg", desc:"Camisa manga curta com variações.", cores:["Rosa Claro","Azul","Bege"], tamanhos:["M","G","GG"], estoque:3 },
-  { id:"CAT-116", nome:"Blazer Alfaiataria", preco:"R$ 179,99", categoria:"Blazers", img:"CAT-116.jpg", desc:"Blazer de alfaiataria.", cores:["Marrom"], tamanhos:["GG"], estoque:1 },
-  { id:"CAT-117", nome:"Blazer Alfaiataria (Azul)", preco:"R$ 179,99", categoria:"Blazers", img:"CAT-117.jpg", desc:"Blazer de alfaiataria azul.", cores:["Azul"], tamanhos:["GG"], estoque:1 },
-  { id:"CAT-118", nome:"Conjunto Alfaiataria", preco:"R$ 187,99", categoria:"Conjuntos", img:"CAT-118.jpg", desc:"Conjunto com saia e blusa.", cores:["Azul","Amarelo","Rosa"], tamanhos:["G","G","G"], estoque:3 },
-  { id:"CAT-119", nome:"Saia Paite longuete", preco:"R$ 136,00", categoria:"Saias", img:"CAT-119.jpg", desc:"Saia longuete em paetê.", cores:["Preto","Marrom","Rosa"], tamanhos:["G","GG","GG"], estoque:3, discount:10 },
-  { id:"CAT-120", nome:"Blusa Manga Longa", preco:"R$ 60,00", categoria:"Blusas", img:"CAT-120.jpg", desc:"Blusa manga longa básica.", cores:["Branco"], tamanhos:["M"], estoque:8 },
-  { id:"CAT-121", nome:"Blazer Alfaiataria Linho", preco:"R$ 170,00", categoria:"Blazers", img:"CAT-121.jpg", desc:"Blazer em linho.", cores:["Rosa","Verde","Amarelo"], tamanhos:["P","G","M"], estoque:3, discount:10 }
+  { id:"CAT-101", nome:"Saia Hortênsia rodada com bolso (acompanha cinto)", preco:"R$ 149,00", categoria:"Saias", img:"CAT-101", desc:"Saia rodada com bolsos e cinto.", cores:["Azul Claro"], tamanhos:["G"], estoque:1 },
+  { id:"CAT-102", nome:"Saia Dália Midi com pregas (frente e costas) com bolso (acompanha cinto)", preco:"R$ 130,00", categoria:"Saias", img:"CAT-102", desc:"Midi com pregas e bolsos, acompanha cinto.", cores:["Marrom","Off White"], tamanhos:["GG"], estoque:2 },
+  { id:"CAT-103", nome:"Saia Flora rodada com bolso (acompanha cinto)", preco:"R$ 120,00", categoria:"Saias", img:"CAT-103", desc:"Saia rodada com bolsos.", cores:["Off White"], tamanhos:["GG"], estoque:1, discount:10 },
+  { id:"CAT-104", nome:"Saia Midi Couro Ecológico", preco:"R$ 159,00", categoria:"Saias", img:"CAT-104", desc:"Saia midi em couro ecológico.", cores:["Off White","Bordô"], tamanhos:["GG","G"], estoque:2 },
+  { id:"CAT-105", nome:"Camisa Social Manga Curta", preco:"R$ 99,90", categoria:"Blusas", img:"CAT-105", desc:"Camisa social manga curta.", cores:["Rosa Claro","Azul","Bege"], tamanhos:["M","G","GG"], estoque:1 },
+  { id:"CAT-106", nome:"Camisa Social", preco:"R$ 79,90", categoria:"Blusas", img:"CAT-106", desc:"Camisa social básica.", cores:["—"], tamanhos:["—"], estoque:1 },
+  { id:"CAT-107", nome:"Camisa Social Brisa", preco:"R$ 79,90", categoria:"Blusas", img:"CAT-107", desc:"Camisa leve Brisa.", cores:["—"], tamanhos:["—"], estoque:2 },
+  { id:"CAT-108", nome:"Vestido Magnólia", preco:"R$ 165,00", categoria:"Vestidos", img:"CAT-108", desc:"Vestido midi Magnólia.", cores:["—"], tamanhos:["—"], estoque:1 },
+  { id:"CAT-109", nome:"Vestido Jardim", preco:"R$ 99,99", categoria:"Vestidos", img:"CAT-109", desc:"Vestido com opção Verde Oliva.", cores:["Verde Oliva"], tamanhos:["M"], estoque:1, discount:10 },
+  { id:"CAT-110", nome:"Vestido Serenar", preco:"R$ 99,99", categoria:"Vestidos", img:"CAT-110", desc:"Vestido com pregas sutis.", cores:["Preto","Azul Marinho"], tamanhos:["M","M"], estoque:2 },
+  { id:"CAT-111", nome:"Blusa Harmonia", preco:"R$ 79,90", categoria:"Blusas", img:"CAT-111", desc:"Blusa Harmonia.", cores:["Branco"], tamanhos:["G1"], estoque:1 },
+  { id:"CAT-112", nome:"Conjunto Bela Essência", preco:"R$ 176,00", categoria:"Conjuntos", img:"CAT-112", desc:"Conjunto sofisticado.", cores:["Preto","Rosé"], tamanhos:["G1","G1"], estoque:2 },
+  { id:"CAT-113", nome:"Vestido Pétala", preco:"R$ 176,00", categoria:"Vestidos", img:"CAT-113", desc:"Vestido Pétala.", cores:["Rosé","Preto"], tamanhos:["G1","G1"], estoque:2 },
+  { id:"CAT-114", nome:"Vestido Magnólia (variações)", preco:"R$ 176,00", categoria:"Vestidos", img:"CAT-114", desc:"Magnólia com novas cores.", cores:["Azul Petróleo","Amarelo Manteiga"], tamanhos:["G1","G2"], estoque:2 },
+  { id:"CAT-115", nome:"Camisa Social manga curta", preco:"R$ 97,90", categoria:"Blusas", img:"CAT-115", desc:"Camisa manga curta com variações.", cores:["Rosa Claro","Azul","Bege"], tamanhos:["M","G","GG"], estoque:3 },
+  { id:"CAT-117", nome:"Blazer Alfaiataria (Azul)", preco:"R$ 179,99", categoria:"Blazers", img:"CAT-117", desc:"Blazer de alfaiataria azul.", cores:["Azul"], tamanhos:["GG"], estoque:1 },
+  { id:"CAT-118", nome:"Conjunto Alfaiataria", preco:"R$ 187,99", categoria:"Conjuntos", img:"CAT-118", desc:"Conjunto com saia e blusa.", cores:["Azul","Amarelo","Rosa"], tamanhos:["G","G","G"], estoque:3 },
+  { id:"CAT-119", nome:"Saia Paite longuete", preco:"R$ 136,00", categoria:"Saias", img:"CAT-119", desc:"Saia longuete em paetê.", cores:["Preto","Marrom","Rosa"], tamanhos:["G","GG","GG"], estoque:3, discount:10 },
+  { id:"CAT-120", nome:"Blusa Manga Longa", preco:"R$ 60,00", categoria:"Blusas", img:"CAT-120", desc:"Blusa manga longa básica.", cores:["Branco"], tamanhos:["M"], estoque:8 },
+  { id:"CAT-121", nome:"Blazer Alfaiataria Linho", preco:"R$ 170,00", categoria:"Blazers", img:"CAT-121", desc:"Blazer em linho.", cores:["Rosa","Verde","Amarelo"], tamanhos:["P","G","M"], estoque:3, discount:10 },
+  // NOVOS ITENS
+  { id:"CAT-122", nome:"Tshirt Manga Muscle", preco:"R$ 23,90", categoria:"Blusas", img:"CAT-122", desc:"Camiseta básica estilo muscle tee.", cores:["Branco","Azul Claro","Bege","Roxo","Roxo"], tamanhos:["M","M","M","M","G"], estoque:7 },
+  { id:"CAT-123", nome:"Vestido Primavera", preco:"R$ 149,90", categoria:"Vestidos", img:"CAT-123", desc:"Vestido leve com cores neutras e verde.", cores:["Bege","Bege","Verde"], tamanhos:["M","G1","G1"], estoque:3 },
+  { id:"CAT-124", nome:"Conjunto Jasmin", preco:"R$ 219,90", categoria:"Conjuntos", img:"CAT-124", desc:"Conjunto elegante Jasmin.", cores:["Preto","Preto"], tamanhos:["M","G1"], estoque:2 },
+  { id:"CAT-125", nome:"Chemise Flor de Canela", preco:"R$ 189,90", categoria:"Vestidos", img:"CAT-125", desc:"Chemise com tom caramelo e verde oliva.", cores:["Caramelo","Verde Oliva"], tamanhos:["G1","G1"], estoque:5 }
 ];
 
 /*\
@@ -186,6 +191,10 @@ Checklist de imagens oficiais (coloque em /img/ e mantenha esses nomes):
   CAT-119.jpg  Saia Paite longuete (Preto/Marrom/Rosa)
   CAT-120.jpg  Blusa Manga Longa — Branco
   CAT-121.jpg  Blazer Alfaiataria Linho (Rosa/Verde/Amarelo)
+  CAT-122.jpg  Tshirt Manga Muscle
+  CAT-123.jpg  Vestido Primavera
+  CAT-124.jpg  Conjunto Jasmin
+  CAT-125.jpg  Chemise Flor de Canela
 */
 
 
@@ -237,6 +246,17 @@ function handleImgError(img, ph){
     const b=document.createElement('span'); b.className='badge-placeholder'; b.textContent='Foto ilustrativa'; card.appendChild(b);
   }
 }
+function tryNext(img, ph){
+  const base = img.getAttribute('data-base');
+  let idx = parseInt(img.getAttribute('data-ext-index')||'0',10);
+  idx++;
+  if(idx < IMG_EXTS.length){
+    img.setAttribute('data-ext-index', String(idx));
+    img.src = `${base}.${IMG_EXTS[idx]}`;
+  } else {
+    handleImgError(img, ph);
+  }
+}
 
 function card(p){
   const el=document.createElement('article');
@@ -245,9 +265,9 @@ function card(p){
   const priceNum = priceToNumber(p.preco);
   const newPrice = hasPromo? priceNum * (1 - Number(p.discount)/100) : priceNum;
   const ph = placeholderURL(p.categoria, p.id);
-  const src = FORCE_PLACEHOLDERS ? ph : (IMG_BASE + p.img);
+  const base = IMG_BASE + p.img; const src = FORCE_PLACEHOLDERS ? ph : `${base}.${IMG_EXTS[0]}`;
   el.innerHTML=`
-    <figure><img loading=\"lazy\" src=\"${src}\" alt=\"${p.nome}\" onerror=\"handleImgError(this,'${ph}')\"></figure>
+    <figure><img loading=\"lazy\" data-base=\"${base}\" data-ext-index=\"0\" src=\"${src}\" alt=\"${p.nome}\" onerror=\"tryNext(this,'${ph}')\"></figure>
     <div class=\"card-body\">
       <span class=\"tag\">${p.categoria}</span>
       <h3 class=\"title\">${p.nome}</h3>
