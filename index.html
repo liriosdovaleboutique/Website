@@ -2,442 +2,227 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Coleção Florescer 🌸 | Lírios do Vale Boutique</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lírios do Vale Boutique — Moda com Propósito</title>
+  <link rel="icon" href="img/logo.jpg">
+  <link rel="apple-touch-icon" href="img/logo.jpg">
+  <meta name="description" content="Moda modesta e elegante. Coleções autorais e Consultoria de Imagem & Estilo para mulheres de fé." />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { 
-      font-family: 'Poppins', sans-serif; 
-      background: #faf8f5; 
-      color: #3d3d3d; 
-      line-height: 1.7; 
-      overflow-x: hidden;
+    :root{
+      --rose:#cba1aa;       /* títulos */
+      --wine:#5C3A40;       /* destaques escuros */
+      --stone:#faf8f5;      /* fundo claro */
+      --ink:#3d3d3d;        /* texto */
+      --muted:#7d7d7d;      /* texto suave */
+      --card:#ffffff;
+      --radius:20px;
+      --shadow:0 12px 36px rgba(92,58,64,.12);
     }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{font-family:'Poppins',sans-serif;background:var(--stone);color:var(--ink);line-height:1.7;overflow-x:hidden}
 
-    header {
-      background: linear-gradient(135deg, #c4a69d 0%, #d4b5ae 50%, #e8d5cf 100%);
-      text-align: center;
-      padding: 180px 20px 120px;
-      color: #fff;
-      position: relative;
-      overflow: hidden;
-    }
+    /* Header / Nav */
+    .nav{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.75);backdrop-filter:blur(8px);border-bottom:1px solid rgba(203,161,170,.25)}
+    .nav .wrap{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:14px 18px}
+    .brand{display:flex;gap:10px;align-items:center;font-weight:700}
+    .brand-logo{width:34px;height:34px;object-fit:contain;border-radius:6px;background:#fff;padding:2px;box-shadow:0 2px 8px rgba(92,58,64,.12)}
+    .brand span{letter-spacing:.8px;color:var(--wine)}
+    .nav a{color:var(--wine);text-decoration:none;font-weight:600;margin-left:18px}
+    .nav a.btn{margin-left:12px}
 
-    header::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url('https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=1500&q=80') center/cover;
-      opacity: 0.15;
-      z-index: 1;
-    }
+    /* Buttons */
+    .btn{display:inline-flex;align-items:center;gap:8px;background:var(--wine);color:#fff;padding:14px 22px;border-radius:999px;text-decoration:none;font-weight:700;box-shadow:0 8px 24px rgba(92,58,64,.25);transition:transform .25s ease, box-shadow .25s ease;border:2px solid transparent}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(92,58,64,.32)}
+    .btn-outline{background:transparent;color:var(--wine);border-color:var(--wine)}
+    .btn-light{background:#fff;color:var(--wine)}
 
-    header > * {
-      position: relative;
-      z-index: 2;
-    }
+    /* Hero */
+    header.hero{position:relative;text-align:center;color:#fff;isolation:isolate}
+    header.hero .bg{position:absolute;inset:0;background:
+      radial-gradient(80% 60% at 50% 30%, rgba(203,161,170,.65), transparent 60%),
+      url('https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=1800&q=80') center/cover no-repeat;filter:contrast(1) saturate(1);z-index:-1}
+    header.hero .veil{position:absolute;inset:0;background:linear-gradient(180deg, rgba(92,58,64,.35), rgba(92,58,64,.55));z-index:-1}
+    header.hero .wrap{max-width:1100px;margin:auto;padding:120px 18px 90px}
+    header.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4.6vw,4.2rem);font-weight:700;letter-spacing:1.2px;text-shadow:0 10px 35px rgba(0,0,0,.25)}
+    header.hero p{max-width:780px;margin:16px auto 28px;font-size:1.15rem}
+    header.hero .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:8px}
 
-    header h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 4.5rem;
-      font-weight: 600;
-      letter-spacing: 3px;
-      margin-bottom: 25px;
-      text-shadow: 2px 4px 20px rgba(0,0,0,0.15);
-      animation: fadeInUp 1s ease;
-    }
+    /* Section base */
+    section{padding:80px 18px}
+    .container{max-width:1200px;margin:auto}
+    h2.section{font-family:'Playfair Display',serif;color:var(--rose);font-size:clamp(1.6rem,3.2vw,2.4rem);font-weight:700;text-align:center;margin-bottom:12px}
+    .section-sub{color:var(--muted);text-align:center;margin:0 auto 28px;max-width:760px}
 
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+    /* Features */
+    .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:36px}
+    .feature{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:28px 22px;border:1px solid rgba(203,161,170,.25)}
+    .feature .ico{font-size:26px}
+    .feature strong{display:block;margin:10px 0 6px;color:var(--wine)}
+    .feature p{color:var(--muted)}
 
-    header p {
-      font-size: 1.4rem;
-      max-width: 700px;
-      margin: 0 auto 40px;
-      font-weight: 300;
-      line-height: 1.8;
-      text-shadow: 1px 2px 10px rgba(0,0,0,0.1);
-    }
+    /* Destaques */
+    .grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(260px, 1fr))}
+    .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;border:1px solid rgba(203,161,170,.25);display:flex;flex-direction:column}
+    .card figure{position:relative;aspect-ratio:3/4;overflow:hidden}
+    .card img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+    .card:hover img{transform:scale(1.05)}
+    .tag{position:absolute;top:12px;left:12px;background:rgba(255,255,255,.9);color:var(--wine);padding:6px 10px;border-radius:999px;font-weight:700;font-size:.75rem;border:1px solid rgba(203,161,170,.35)}
+    .card .body{padding:18px}
+    .card h3{font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--wine);margin-bottom:6px}
+    .card p{color:var(--muted)}
 
-    .btn {
-      display: inline-block;
-      background: #9b7d71;
-      color: #fff;
-      padding: 18px 45px;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1.1rem;
-      margin: 12px;
-      transition: all 0.4s ease;
-      box-shadow: 0 8px 20px rgba(155, 125, 113, 0.3);
-      border: 2px solid transparent;
-    }
-    .btn:hover {
-      background: #fff;
-      color: #9b7d71;
-      border-color: #9b7d71;
-      transform: translateY(-3px);
-      box-shadow: 0 12px 30px rgba(155, 125, 113, 0.4);
-    }
+    /* Consultoria */
+    .consultoria{background:linear-gradient(135deg,#f3edea 0%, #faf8f5 100%)}
+    .pro{display:grid;grid-template-columns: 420px 1fr;gap:28px;align-items:center}
+    .pro-card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid rgba(203,161,170,.25);overflow:hidden}
+    .pro-card figure{aspect-ratio:3/4;overflow:hidden}
+    .pro-card img{width:100%;height:100%;object-fit:cover}
+    .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:18px 0}
+    .step{background:#fff;border-radius:14px;border:1px solid rgba(203,161,170,.25);padding:14px 16px}
+    .packs{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:10px}
+    .pack{background:#fff;border:1px solid rgba(203,161,170,.25);border-radius:16px;padding:18px}
+    .pack h4{color:var(--wine);margin-bottom:6px}
+    .pack ul{margin:8px 0 14px 18px;color:var(--muted)}
 
-    .btn-secondary {
-      background: transparent;
-      border: 2px solid #fff;
-      color: #fff;
-    }
+    /* Rodapé */
+    footer{background:linear-gradient(135deg, var(--wine) 0%, #8a6c60 100%);color:#fff;padding:42px 18px 28px;text-align:center}
+    footer a{color:#fff;opacity:.9;text-decoration:none}
+    footer a:hover{opacity:1;text-decoration:underline}
 
-    .btn-secondary:hover {
-      background: #fff;
-      color: #9b7d71;
-      border-color: #fff;
-    }
-
-    section {
-      padding: 100px 20px;
-      text-align: center;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    h2 {
-      font-family: 'Playfair Display', serif;
-      color: #9b7d71;
-      margin-bottom: 30px;
-      font-size: 3rem;
-      font-weight: 600;
-      position: relative;
-      display: inline-block;
-    }
-
-    h2::after {
-      content: '';
-      position: absolute;
-      bottom: -15px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 3px;
-      background: linear-gradient(90deg, transparent, #c4a69d, transparent);
-    }
-
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 30px;
-      margin-top: 60px;
-    }
-    
-    .feature {
-      background: #fff;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(196, 166, 157, 0.15);
-      padding: 40px 25px;
-      transition: all 0.4s ease;
-      border: 1px solid #f0e8e3;
-    }
-
-    .feature:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 40px rgba(196, 166, 157, 0.25);
-    }
-
-    .feature-icon {
-      font-size: 3rem;
-      display: block;
-      margin-bottom: 20px;
-    }
-
-    .feature strong {
-      display: block;
-      font-size: 1.3rem;
-      color: #9b7d71;
-      margin-bottom: 10px;
-    }
-
-    .feature p {
-      font-size: 0.95rem;
-      color: #7d7d7d;
-    }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 30px;
-      margin-top: 60px;
-    }
-
-    .gallery-item {
-      position: relative;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      transition: all 0.5s ease;
-    }
-
-    .gallery img {
-      width: 100%;
-      height: 400px;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-    
-    .gallery-item:hover img {
-      transform: scale(1.1);
-    }
-
-    .gallery-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(transparent, rgba(155, 125, 113, 0.95));
-      padding: 30px;
-      color: #fff;
-      transform: translateY(100%);
-      transition: transform 0.4s ease;
-    }
-
-    .gallery-item:hover .gallery-overlay {
-      transform: translateY(0);
-    }
-
-    .gallery-overlay h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
-      margin-bottom: 10px;
-    }
-
-    .timer {
-      font-size: 2rem;
-      color: #9b7d71;
-      margin: 35px 0;
-      font-weight: 600;
-      padding: 25px;
-      background: #fff;
-      border-radius: 15px;
-      box-shadow: 0 8px 25px rgba(196, 166, 157, 0.2);
-      display: inline-block;
-    }
-
-    #oferta {
-      background: linear-gradient(135deg, #f0e8e3 0%, #faf8f5 100%);
-      border-radius: 30px;
-      margin: 50px auto;
-      padding: 80px 40px;
-      box-shadow: 0 15px 50px rgba(0,0,0,0.08);
-    }
-
-    #oferta p {
-      font-size: 1.3rem;
-      max-width: 800px;
-      margin: 20px auto 40px;
-      color: #5d5d5d;
-    }
-
-    .lead-form {
-      margin-top: 40px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-      align-items: center;
-    }
-
-    .lead-form input {
-      padding: 16px 25px;
-      border-radius: 50px;
-      border: 2px solid #e0d5cf;
-      width: 280px;
-      font-size: 1rem;
-      transition: all 0.3s ease;
-      background: #fff;
-    }
-
-    .lead-form input:focus {
-      outline: none;
-      border-color: #c4a69d;
-      box-shadow: 0 5px 15px rgba(196, 166, 157, 0.2);
-    }
-
-    .lead-form button {
-      padding: 16px 40px;
-      background: #9b7d71;
-      color: #fff;
-      border: none;
-      border-radius: 50px;
-      font-weight: 600;
-      font-size: 1.1rem;
-      cursor: pointer;
-      transition: all 0.4s ease;
-      box-shadow: 0 8px 20px rgba(155, 125, 113, 0.3);
-    }
-
-    .lead-form button:hover {
-      background: #8a6c60;
-      transform: translateY(-3px);
-      box-shadow: 0 12px 30px rgba(155, 125, 113, 0.4);
-    }
-
-    footer {
-      background: linear-gradient(135deg, #9b7d71 0%, #8a6c60 100%);
-      color: #faf8f5;
-      padding: 60px 20px 30px;
-      text-align: center;
-    }
-
-    footer a {
-      color: #faf8f5;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: 500;
-      transition: all 0.3s ease;
-    }
-
-    footer a:hover { 
-      color: #e8d5cf;
-      text-decoration: underline; 
-    }
-
-    footer p {
-      margin: 15px 0;
-    }
-
-    @media (max-width: 768px) {
-      header h1 { font-size: 2.8rem; }
-      h2 { font-size: 2.2rem; }
-      section { padding: 70px 20px; }
-      .lead-form input { width: 100%; max-width: 350px; }
-      .gallery img { height: 300px; }
-    }
+    /* Responsivo */
+    @media (max-width:980px){ .pro{grid-template-columns:1fr} }
   </style>
 </head>
 <body>
-  <header>
-    <h1>🌷 Coleção Florescer</h1>
-    <p>Vista a beleza da fé e o poder da feminilidade. Uma coleção criada para mulheres que florescem em graça e propósito.</p>
-    <a href="#colecao" class="btn">✨ Quero Florescer Agora</a>
-    <a href="#conceito" class="btn btn-secondary">📖 Conhecer a Inspiração</a>
+  <!-- NAVBAR -->
+  <nav class="nav">
+    <div class="wrap">
+      <div class="brand"><img class="brand-logo" src="img/logo.jpg" alt="Lírios do Vale" /><span>Lírios do Vale</span></div>
+      <div class="links">
+        <a href="#colecao">Coleção</a>
+        <a href="#consultoria">Consultoria</a>
+        <a href="colecao.html" class="btn btn-light">Ver Coleção</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <img src="img/logo-lirios.png" alt="" aria-hidden="true" style="position:absolute; right:24px; top:24px; width:54px; opacity:.92; filter:drop-shadow(0 6px 16px rgba(0,0,0,.18)); z-index:1;">
+    <div class="bg"></div><div class="veil"></div>
+    <div class="wrap">
+      <h1>Moda com Propósito, Elegância e Fé</h1>
+      <p>Peças autorais com caimento impecável, pensadas para mulheres que florescem em graça. Descubra a coleção e eleve sua imagem com nossa consultoria exclusiva.</p>
+      <div class="cta">
+        <a class="btn" href="colecao.html">🌷 Ver Coleção Completa</a>
+        <a class="btn btn-outline" href="#consultoria">👩‍🎨 Consultoria de Imagem</a>
+      </div>
+    </div>
   </header>
 
-  <section id="conceito">
-    <h2>🌷 Inspirada na leveza e na fé</h2>
-    <p style="font-size: 1.2rem; max-width: 800px; margin: 30px auto; color: #5d5d5d;">"Florescer" nasceu para lembrar que cada estação é uma nova chance de recomeçar. Peças com cortes modernos e tecidos nobres para mulheres de fé que valorizam elegância e propósito.</p>
+  <!-- CONCEITO / DIFERENCIAIS -->
+  <section class="container">
+    <h2 class="section">Florescer é revelar o melhor de você</h2>
+    <p class="section-sub">Cortes atemporais, tecidos escolhidos a dedo e uma paleta que valoriza sua beleza natural. Cada detalhe foi pensado para oferecer conforto, elegância e propósito.</p>
     <div class="features">
-      <div class="feature">
-        <span class="feature-icon">✨</span>
-        <strong>Modelagem Modesta</strong>
-        <p>Elegância que respeita seus valores</p>
+      <div class="feature"><div class="ico">✨</div><strong>Acabamento Premium</strong><p>Costuras e aviamentos selecionados para alta durabilidade.</p></div>
+      <div class="feature"><div class="ico">🌿</div><strong>Paleta Curada</strong><p>Cores que conversam com diferentes cartelas de coloração pessoal.</p></div>
+      <div class="feature"><div class="ico">👑</div><strong>Modéstia & Estilo</strong><p>Modelagens modestas sem abrir mão do design contemporâneo.</p></div>
+      <div class="feature"><div class="ico">🛍️</div><strong>Edição Limitada</strong><p>Produção exclusiva com atenção aos detalhes.</p></div>
+    </div>
+  </section>
+
+  <!-- DESTAQUES DA COLEÇÃO -->
+  <section id="colecao" class="container">
+    <h2 class="section">Destaques da Coleção</h2>
+    <p class="section-sub">Algumas peças queridinhas. Veja a coleção completa para explorar tamanhos, cores e disponibilidade.</p>
+    <div class="grid">
+      <article class="card">
+        <figure><span class="tag">Saia</span><img src="img/CAT-101.jpg" alt="Saia Hortênsia" loading="lazy"></figure>
+        <div class="body"><h3>Saia Hortênsia</h3><p>Rodada com bolsos e cinto. Elegância ao dia a dia.</p></div>
+      </article>
+      <article class="card">
+        <figure><span class="tag">Conjunto</span><img src="img/CAT-118.jpg" alt="Conjunto Alfaiataria" loading="lazy"></figure>
+        <div class="body"><h3>Conjunto Alfaiataria</h3><p>Caimento impecável, ideal para ocasiões especiais.</p></div>
+      </article>
+      <article class="card">
+        <figure><span class="tag">Blazer</span><img src="img/CAT-121.jpg" alt="Blazer Linho" loading="lazy"></figure>
+        <div class="body"><h3>Blazer Linho</h3><p>Textura suave e toque natural para compor com graça.</p></div>
+      </article>
+    </div>
+    <div style="text-align:center;margin-top:18px">
+      <a class="btn" href="colecao.html">Ver Coleção Completa</a>
+    </div>
+  </section>
+
+  <!-- CONSULTORIA DE IMAGEM & ESTILO -->
+  <section id="consultoria" class="consultoria">
+    <div class="container pro">
+      <div class="pro-card">
+        <figure>
+          <img src="img/estilo.jpg" alt="Consultoria de Imagem — mulher empreendedora elegante" loading="lazy" style="object-position:center top" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1000&auto=format&fit=crop';">
+        </figure>
       </div>
-      <div class="feature">
-        <span class="feature-icon">🌷</span>
-        <strong>Tecidos Leves</strong>
-        <p>Conforto para todo o dia</p>
-      </div>
-      <div class="feature">
-        <span class="feature-icon">👑</span>
-        <strong>Ideal para Cultos</strong>
-        <p>Perfeito para eventos especiais</p>
-      </div>
-      <div class="feature">
-        <span class="feature-icon">🌷</span>
-        <strong>Edição Limitada</strong>
-        <p>Exclusividade garantida</p>
+      <div>
+        <h2 class="section" style="text-align:left">Consultoria de Imagem & Estilo</h2>
+        <p class="section-sub" style="text-align:left;margin-left:0">Atendimento especializado para alinhar quem você é com o que você veste. Coloração pessoal, análise de biotipo, curadoria de looks e montagem de guarda-roupa cápsula — tudo com sensibilidade e propósito.</p>
+
+        <div class="steps">
+          <div class="step"><strong>1) Coloração Pessoal</strong><p>Descubra sua paleta (primavera, verão, outono, inverno) e como aplicá-la nas compras.</p></div>
+          <div class="step"><strong>2) Biotipo & Proporções</strong><p>Modelagens e comprimentos que valorizam seu corpo com modéstia.</p></div>
+          <div class="step"><strong>3) Guarda‑roupa Inteligente</strong><p>Peças-chave que multiplicam combinações para sua rotina.</p></div>
+        </div>
+
+        <div class="packs">
+          <div class="pack">
+            <h4>Essencial</h4>
+            <ul>
+              <li>Consulta online (60–90min)</li>
+              <li>Guia de Paleta + PDF de Looks</li>
+              <li>1 semana de suporte no WhatsApp</li>
+            </ul>
+            <a class="btn btn-light" href="https://wa.me/5511943996296?text=Olá!%20Quero%20a%20Consultoria%20Essencial." target="_blank" rel="noopener">💬 Quero este</a>
+          </div>
+          <div class="pack">
+            <h4>Completa</h4>
+            <ul>
+              <li>Coloração + Biotipo + Closet Detox</li>
+              <li>Curadoria personalizada de compras</li>
+              <li>2 semanas de suporte VIP</li>
+            </ul>
+            <a class="btn" href="https://wa.me/5511943996296?text=Olá!%20Quero%20a%20Consultoria%20Completa." target="_blank" rel="noopener">🌟 Reservar</a>
+          </div>
+          <div class="pack">
+            <h4>Presencial (sob consulta)</h4>
+            <ul>
+              <li>Atendimento presencial agendado</li>
+              <li>Montagem de looks + fotos</li>
+              <li>Follow-up de 30 dias</li>
+            </ul>
+            <a class="btn btn-outline" href="https://wa.me/5511943996296?text=Olá!%20Quero%20saber%20sobre%20o%20atendimento%20presencial." target="_blank" rel="noopener">📍 Falar no WhatsApp</a>
+          </div>
+        </div>
+
+        <div style="margin-top:14px">
+          <a class="btn btn-light" href="https://chat.whatsapp.com/JsqHqcWm2l54dpJDO6gmA7?mode=wwc" target="_blank" rel="noopener">👭 Entrar na Comunidade VIP</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="colecao">
-    <h2>👗 Conheça as Peças</h2>
-    <p style="font-size: 1.15rem; max-width: 700px; margin: 20px auto 0; color: #5d5d5d;">Cada peça foi pensada com carinho para você expressar sua fé com estilo</p>
-    <div class="gallery">
-      <div class="gallery-item">
-        <img src="img/CAT-101.jpg" alt="Vestido Aurora">
-        <div class="gallery-overlay">
-          <h3>Saia Hortênsia e Blusa Brisa</h3>
-          <p>Delicadeza em cada detalhe</p>
-        </div>
-      </div>
-      <div class="gallery-item">
-        <img src="img/CAT-118.jpg" alt="Conjunto Lírio">
-        <div class="gallery-overlay">
-          <h3>Conjunto Alfaiataria</h3>
-          <p>Sofisticação e conforto</p>
-        </div>
-      </div>
-      <div class="gallery-item">
-        <img src="img/CAT-121.jpg" alt="Saia Rosé Grace">
-        <div class="gallery-overlay">
-          <h3>Blazer Alfaiataria Linho</h3>
-          <p>Elegância atemporal</p>
-        </div>
-      </div>
-    </div>
-    <a href="colecao.html" class="btn" style="margin-top: 50px;">🌷 Ver Coleção Completa</a>
-  </section>
-
-  <section id="oferta">
-    <h2>🌷 Lançamento Exclusivo — Estoque Limitado!</h2>
-    <p>Garanta suas peças da Coleção <strong>Florescer</strong> com <strong>10% de desconto</strong> no lançamento.<br> 
-    <span style="color: #9b7d71; font-weight: 600;">Frete grátis para os 100 primeiros pedidos.</span></p>
-    <div class="timer" id="countdown">⏰ Carregando promoção...</div>
-    <a href="#lead" class="btn" style="margin-top: 30px;">🌷 Quero Minha Coleção Agora</a>
-  </section>
-
-  <section id="lead">
-    <h2>🌷 Entre para a Lista VIP</h2>
-    <p style="font-size: 1.2rem; max-width: 650px; margin: 20px auto; color: #5d5d5d;">Receba novidades, cupons exclusivos e devocionais inspiradores direto no seu e-mail!</p>
-    <form class="lead-form">
-      <input type="text" placeholder="Seu nome completo" required>
-      <input type="email" placeholder="Seu melhor e-mail" required>
-      <button type="submit">💌 Quero Fazer Parte</button>
-    </form>
+  <!-- CHAMADA FINAL -->
+  <section class="container" style="text-align:center">
+    <h2 class="section">Pronta para florescer?</h2>
+    <p class="section-sub">Escolha suas peças favoritas e, se desejar, conte com nossa curadoria para montar combinações que expressem sua fé e estilo.</p>
+    <div class="cta"><a class="btn" href="colecao.html">Ver Coleção</a> <a class="btn btn-outline" href="https://wa.me/5511943996296" target="_blank" rel="noopener">Falar no WhatsApp</a></div>
   </section>
 
   <footer>
-    <p style="font-size: 1.1rem; font-weight: 600; margin-bottom: 20px;">© 2025 Lírios do Vale Boutique | Moda com Propósito</p>
-    <p style="margin: 25px 0;">
-      <a href="#">Catálogo</a> |
-      <a href="#">Quem Somos</a> |
-      <a href="#">Política de Trocas</a> |
-      <a href="#">Contato</a>
-    </p>
-    <p style="font-style: italic; margin-top: 30px; font-size: 1.1rem;">"Vista-se de graça, fé e propósito." ✨</p>
+    <p>© 2025 Lírios do Vale Boutique — Todos os direitos reservados</p>
+    <p><a href="colecao.html">Coleção</a> • <a href="#consultoria">Consultoria</a> • <a href="#">Políticas</a></p>
+    <p style="opacity:.9;font-style:italic">“Vista-se de graça, fé e propósito.”</p>
   </footer>
-
-  <script>
-    // Timer de urgência
-    const countdown = document.getElementById('countdown');
-    const targetDate = new Date();
-    targetDate.setHours(targetDate.getHours() + 48);
-
-    setInterval(() => {
-      const now = new Date().getTime();
-      const distance = targetDate - now;
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      countdown.innerHTML = `⏰ Promoção termina em: ${days}d ${hours}h ${minutes}m ${seconds}s`;
-    }, 1000);
-
-    // Prevenir envio do formulário (pode ser integrado com backend depois)
-    document.querySelector('.lead-form').addEventListener('submit', (e) => {
-      e.preventDefault();
-      alert('Obrigada por se cadastrar! Em breve você receberá nossas novidades. 🌷');
-    });
-  </script>
 </body>
 </html>
